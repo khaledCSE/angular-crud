@@ -7,10 +7,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
+  baseUrl = 'http://localhost:3000/employees'
 
   constructor(private http: HttpClient) { }
 
   addEmployee(data: IEmployee): Observable<IEmployeeResponse[]> {
-    return this.http.post<IEmployeeResponse[]>('http://localhost:3000/employees', data)
+    return this.http.post<IEmployeeResponse[]>(this.baseUrl, data)
+  }
+
+  getAllEmployees(): Observable<IEmployeeResponse[]> {
+    return this.http.get<IEmployeeResponse[]>(this.baseUrl)
   }
 }
