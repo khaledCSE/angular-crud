@@ -39,7 +39,15 @@ export class AppComponent implements OnInit {
   }
 
   openAddEditForm() {
-    this.dialog.open(AddEditEmployeeComponent)
+    // For auto refresh
+    const dialogRef = this.dialog.open(AddEditEmployeeComponent)
+    dialogRef.afterClosed().subscribe({
+      next: (value) => {
+        if (value) {
+          this.getAllEmployees()
+        }
+      },
+    })
   }
 
   getAllEmployees() {

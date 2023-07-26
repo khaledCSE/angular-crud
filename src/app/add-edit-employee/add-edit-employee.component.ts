@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { DialogRef } from '@angular/cdk/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-edit-employee',
@@ -12,7 +12,7 @@ export class AddEditEmployeeComponent {
   employeeForm: FormGroup
   educationOptions = ['Secondary', 'Higher Secondary', 'Diploma', 'Graduation', 'Post Graduation', 'Phd']
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private dialogRef: DialogRef<AddEditEmployeeComponent>) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private dialogRef: MatDialogRef<AddEditEmployeeComponent>) {
     this.employeeForm = fb.group({
       firstName: '',
       lastName: '',
@@ -32,7 +32,7 @@ export class AddEditEmployeeComponent {
         .subscribe({
           next: (value) => {
             alert('Employee saved! 😊');
-            this.dialogRef.close()
+            this.dialogRef.close(true)
             this.apiService.getAllEmployees()
           },
           error: (err) => {
