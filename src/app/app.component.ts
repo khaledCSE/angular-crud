@@ -59,4 +59,13 @@ export class AppComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  handleDelete(id: number | string) {
+    this.apiSrevice.deleteEmployee(Number(id)).subscribe({
+      next: (value) => {
+        alert('Deleted')
+        this.getAllEmployees()
+      },
+    })
+  }
 }

@@ -33,6 +33,7 @@ export class AddEditEmployeeComponent {
           next: (value) => {
             alert('Employee saved! 😊');
             this.dialogRef.close()
+            this.apiService.getAllEmployees()
           },
           error: (err) => {
             alert('Could not save!')

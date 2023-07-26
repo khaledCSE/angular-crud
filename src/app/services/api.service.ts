@@ -18,4 +18,8 @@ export class ApiService {
   getAllEmployees(): Observable<IEmployeeResponse[]> {
     return this.http.get<IEmployeeResponse[]>(this.baseUrl)
   }
+
+  deleteEmployee(employeeId: number) {
+    return this.http.delete(`${this.baseUrl}/${employeeId}`)
+  }
 }
