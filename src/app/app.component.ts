@@ -7,6 +7,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ApiService } from './services/api.service';
+import { IEmployeeResponse } from './types';
 
 @Component({
   selector: 'app-root',
@@ -73,6 +74,17 @@ export class AppComponent implements OnInit {
       next: (value) => {
         alert('Deleted')
         this.getAllEmployees()
+      },
+    })
+  }
+
+  handleEdit(row: IEmployeeResponse) {
+    const dialogRef = this.dialog.open(AddEditEmployeeComponent, { data: row })
+    dialogRef.afterClosed().subscribe({
+      next: (value) => {
+        if (value) {
+          this.getAllEmployees()
+        }
       },
     })
   }

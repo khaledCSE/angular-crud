@@ -60,7 +60,7 @@
     </div>
   </div>
   <div mat-dialog-actions class="action">
-    <button mat-raised-button color="warn">Close</button>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false">Close</button>
+    <button mat-raised-button color="primary" type="submit">{{ data ? 'Update' : 'Save' }}</button>
   </div>
 </form>

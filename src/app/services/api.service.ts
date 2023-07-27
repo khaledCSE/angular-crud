@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.get<IEmployeeResponse[]>(this.baseUrl)
   }
 
+  updateEmployee(employeeId: number, data: IEmployeeResponse) {
+    return this.http.put(`${this.baseUrl}/${employeeId}`, data)
+  }
+
   deleteEmployee(employeeId: number) {
     return this.http.delete(`${this.baseUrl}/${employeeId}`)
   }
